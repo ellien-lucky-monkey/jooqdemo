@@ -1,0 +1,13 @@
+#build
+target/
+*.class
+
+#idea
+.settings/
+.porject
+.classpath
+.idea/
+*.iml
+
+#logs
+logs/
