@@ -1,4 +1,4 @@
-package com.jooq.demo;
+package com.jooq.demo.converter;
 
 import org.joda.time.DateTime;
 import org.jooq.Converter;

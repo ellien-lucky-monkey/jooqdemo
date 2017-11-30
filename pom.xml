@@ -190,7 +190,7 @@
                                         <customType>
                                             <name>timestampToJodaTime</name>
                                             <type>org.joda.time.DateTime</type>
-                                            <converter>com.jooq.demo.TimestampConverter</converter>
+                                            <converter>com.jooq.demo.converter.TimestampConverter</converter>
                                         </customType>
                                     </customTypes>
                                     <forcedTypes>

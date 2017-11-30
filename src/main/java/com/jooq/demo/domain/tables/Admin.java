@@ -4,7 +4,7 @@
 package com.jooq.demo.domain.tables;
 
 
-import com.jooq.demo.TimestampConverter;
+import com.jooq.demo.converter.TimestampConverter;
 import com.jooq.demo.domain.Keys;
 import com.jooq.demo.domain.Test;
 import com.jooq.demo.domain.tables.records.AdminRecord;
