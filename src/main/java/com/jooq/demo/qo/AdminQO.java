@@ -22,6 +22,7 @@ public class AdminQO implements Conditional {
     private String username;
     private String password;
     private String nickName;
+
     @Override
     public List<Condition> conditions() {
         List<Condition> conditions = Lists.newArrayList();

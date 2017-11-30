@@ -1,7 +1,6 @@
 package com.jooq.demo.repository.admin;
 
 import com.jooq.demo.domain.tables.pojos.Admin;
-import com.jooq.demo.domain.tables.records.AdminRecord;
 import com.jooq.demo.qo.AdminQO;
 import com.jooq.demo.repository.AbstractSingleRepository;
 import org.apache.commons.lang3.tuple.Pair;

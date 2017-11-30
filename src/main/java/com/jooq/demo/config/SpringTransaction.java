@@ -15,6 +15,7 @@ public class SpringTransaction implements Transaction {
     SpringTransaction(TransactionStatus transactionStatus) {
         this.transactionStatus = transactionStatus;
     }
+
     public TransactionStatus getTxStatus() {
         return this.transactionStatus;
     }

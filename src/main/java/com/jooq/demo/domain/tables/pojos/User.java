@@ -5,10 +5,9 @@ package com.jooq.demo.domain.tables.pojos;
 
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
-
-import org.jooq.types.UInteger;
 
 
 /**
@@ -24,28 +23,119 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-	private static final long serialVersionUID = -1515241094;
+	private static final long serialVersionUID = -670418071;
 
-	private UInteger id;
+	private Integer   id;
+	private String    username;
+	private String    password;
+	private String    nickName;
+	private String    address;
+	private Integer   isDel;
+	private Timestamp createdTime;
+	private Timestamp updatedTime;
 
 	public User() {}
 
 	public User(User value) {
 		this.id = value.id;
+		this.username = value.username;
+		this.password = value.password;
+		this.nickName = value.nickName;
+		this.address = value.address;
+		this.isDel = value.isDel;
+		this.createdTime = value.createdTime;
+		this.updatedTime = value.updatedTime;
 	}
 
 	public User(
-		UInteger id
+		Integer   id,
+		String    username,
+		String    password,
+		String    nickName,
+		String    address,
+		Integer   isDel,
+		Timestamp createdTime,
+		Timestamp updatedTime
 	) {
 		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.nickName = nickName;
+		this.address = address;
+		this.isDel = isDel;
+		this.createdTime = createdTime;
+		this.updatedTime = updatedTime;
 	}
 
-	public UInteger getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public User setId(UInteger id) {
+	public User setId(Integer id) {
 		this.id = id;
+		return this;
+	}
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public User setUsername(String username) {
+		this.username = username;
+		return this;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public User setPassword(String password) {
+		this.password = password;
+		return this;
+	}
+
+	public String getNickName() {
+		return this.nickName;
+	}
+
+	public User setNickName(String nickName) {
+		this.nickName = nickName;
+		return this;
+	}
+
+	public String getAddress() {
+		return this.address;
+	}
+
+	public User setAddress(String address) {
+		this.address = address;
+		return this;
+	}
+
+	public Integer getIsDel() {
+		return this.isDel;
+	}
+
+	public User setIsDel(Integer isDel) {
+		this.isDel = isDel;
+		return this;
+	}
+
+	public Timestamp getCreatedTime() {
+		return this.createdTime;
+	}
+
+	public User setCreatedTime(Timestamp createdTime) {
+		this.createdTime = createdTime;
+		return this;
+	}
+
+	public Timestamp getUpdatedTime() {
+		return this.updatedTime;
+	}
+
+	public User setUpdatedTime(Timestamp updatedTime) {
+		this.updatedTime = updatedTime;
 		return this;
 	}
 
@@ -54,6 +144,13 @@ public class User implements Serializable {
 		StringBuilder sb = new StringBuilder("User (");
 
 		sb.append(id);
+		sb.append(", ").append(username);
+		sb.append(", ").append(password);
+		sb.append(", ").append(nickName);
+		sb.append(", ").append(address);
+		sb.append(", ").append(isDel);
+		sb.append(", ").append(createdTime);
+		sb.append(", ").append(updatedTime);
 
 		sb.append(")");
 		return sb.toString();

@@ -14,7 +14,6 @@ import javax.annotation.Generated;
 import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
-import org.jooq.types.UInteger;
 
 
 /**
@@ -36,7 +35,7 @@ public class Keys {
 	// -------------------------------------------------------------------------
 
 	public static final Identity<AdminRecord, Integer> IDENTITY_ADMIN = Identities0.IDENTITY_ADMIN;
-	public static final Identity<UserRecord, UInteger> IDENTITY_USER = Identities0.IDENTITY_USER;
+	public static final Identity<UserRecord, Integer> IDENTITY_USER = Identities0.IDENTITY_USER;
 
 	// -------------------------------------------------------------------------
 	// UNIQUE and PRIMARY KEY definitions
@@ -56,7 +55,7 @@ public class Keys {
 
 	private static class Identities0 extends AbstractKeys {
 		public static Identity<AdminRecord, Integer> IDENTITY_ADMIN = createIdentity(Admin.ADMIN, Admin.ADMIN.ID);
-		public static Identity<UserRecord, UInteger> IDENTITY_USER = createIdentity(User.USER, User.USER.ID);
+		public static Identity<UserRecord, Integer> IDENTITY_USER = createIdentity(User.USER, User.USER.ID);
 	}
 
 	private static class UniqueKeys0 extends AbstractKeys {

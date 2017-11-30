@@ -83,6 +83,12 @@
             <version>1.2.16</version>
         </dependency>
         <!-- utils end-->
+
+        <!--flyway-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -150,7 +156,7 @@
     </build>
     <profiles>
         <profile>
-            <id>gensrc-clinic</id>
+            <id>gensrc-test</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

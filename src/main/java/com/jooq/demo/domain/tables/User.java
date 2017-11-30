@@ -8,6 +8,7 @@ import com.jooq.demo.domain.Keys;
 import com.jooq.demo.domain.Test;
 import com.jooq.demo.domain.tables.records.UserRecord;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +20,6 @@ import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.TableImpl;
-import org.jooq.types.UInteger;
 
 
 /**
@@ -35,7 +35,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-	private static final long serialVersionUID = -1133133690;
+	private static final long serialVersionUID = 176750602;
 
 	/**
 	 * The reference instance of <code>test.user</code>
@@ -53,7 +53,42 @@ public class User extends TableImpl<UserRecord> {
 	/**
 	 * The column <code>test.user.id</code>.
 	 */
-	public final TableField<UserRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+	public final TableField<UserRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+
+	/**
+	 * The column <code>test.user.username</code>.
+	 */
+	public final TableField<UserRecord, String> USERNAME = createField("username", org.jooq.impl.SQLDataType.VARCHAR.length(20).defaulted(true), this, "");
+
+	/**
+	 * The column <code>test.user.password</code>.
+	 */
+	public final TableField<UserRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR.length(20).defaulted(true), this, "");
+
+	/**
+	 * The column <code>test.user.nick_name</code>.
+	 */
+	public final TableField<UserRecord, String> NICK_NAME = createField("nick_name", org.jooq.impl.SQLDataType.VARCHAR.length(20), this, "");
+
+	/**
+	 * The column <code>test.user.address</code>.
+	 */
+	public final TableField<UserRecord, String> ADDRESS = createField("address", org.jooq.impl.SQLDataType.VARCHAR.length(20), this, "");
+
+	/**
+	 * The column <code>test.user.is_del</code>.
+	 */
+	public final TableField<UserRecord, Integer> IS_DEL = createField("is_del", org.jooq.impl.SQLDataType.INTEGER.defaulted(true), this, "");
+
+	/**
+	 * The column <code>test.user.created_time</code>.
+	 */
+	public final TableField<UserRecord, Timestamp> CREATED_TIME = createField("created_time", org.jooq.impl.SQLDataType.TIMESTAMP.defaulted(true), this, "");
+
+	/**
+	 * The column <code>test.user.updated_time</code>.
+	 */
+	public final TableField<UserRecord, Timestamp> UPDATED_TIME = createField("updated_time", org.jooq.impl.SQLDataType.TIMESTAMP.defaulted(true), this, "");
 
 	/**
 	 * Create a <code>test.user</code> table reference
@@ -81,7 +116,7 @@ public class User extends TableImpl<UserRecord> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Identity<UserRecord, UInteger> getIdentity() {
+	public Identity<UserRecord, Integer> getIdentity() {
 		return Keys.IDENTITY_USER;
 	}
 

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @date 2017/11/29 15:22
  */
 public abstract class AbstractRepository implements TableConstants, DbConstants {
+
     @Autowired
     @Qualifier(DSL_TEST)
     protected DSLContext dsl;

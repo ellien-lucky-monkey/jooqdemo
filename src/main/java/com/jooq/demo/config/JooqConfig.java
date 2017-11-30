@@ -23,17 +23,20 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class JooqConfig {
+
     @Bean
     public DataSourceConnectionProvider dataSourceConnectionProviderA(
             @Qualifier("dataSourceA") DataSource dataSourceA) {
         return new DataSourceConnectionProvider(
                 new TransactionAwareDataSourceProxy(dataSourceA));
     }
+
     @Bean
     public SpringTransactionProvider transactionProviderA(
             @Qualifier("transactionManagerA") DataSourceTransactionManager txManagerW) {
         return new SpringTransactionProvider(txManagerW);
     }
+
     @Configuration
     public static class DslContextConfig {
 
@@ -54,6 +57,7 @@ public class JooqConfig {
                                              @Qualifier("transactionProviderA") SpringTransactionProvider transactionProviderA) {
             return new DefaultDSLContext(configuration(connectionProviderA, transactionProviderA));
         }
+
         private DefaultConfiguration configuration(ConnectionProvider connectionProvider, TransactionProvider transactionProvider) {
             DefaultConfiguration configuration = new DefaultConfiguration();
             configuration.setSQLDialect(SQLDialect.MYSQL);
