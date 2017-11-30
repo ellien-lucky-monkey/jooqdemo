@@ -5,9 +5,10 @@ package com.jooq.demo.domain.tables.pojos;
 
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 import javax.annotation.Generated;
+
+import org.joda.time.DateTime;
 
 
 /**
@@ -23,17 +24,17 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-	private static final long serialVersionUID = -71665674;
+	private static final long serialVersionUID = -881990506;
 
-	private Integer   id;
-	private String    username;
-	private String    sex;
-	private String    password;
-	private String    nickName;
-	private String    address;
-	private Integer   isDel;
-	private Timestamp createdTime;
-	private Timestamp updatedTime;
+	private Integer  id;
+	private String   username;
+	private String   sex;
+	private String   password;
+	private String   nickName;
+	private String   address;
+	private Integer  isDel;
+	private DateTime createdTime;
+	private DateTime updatedTime;
 
 	public User() {}
 
@@ -50,15 +51,15 @@ public class User implements Serializable {
 	}
 
 	public User(
-		Integer   id,
-		String    username,
-		String    sex,
-		String    password,
-		String    nickName,
-		String    address,
-		Integer   isDel,
-		Timestamp createdTime,
-		Timestamp updatedTime
+		Integer  id,
+		String   username,
+		String   sex,
+		String   password,
+		String   nickName,
+		String   address,
+		Integer  isDel,
+		DateTime createdTime,
+		DateTime updatedTime
 	) {
 		this.id = id;
 		this.username = username;
@@ -134,20 +135,20 @@ public class User implements Serializable {
 		return this;
 	}
 
-	public Timestamp getCreatedTime() {
+	public DateTime getCreatedTime() {
 		return this.createdTime;
 	}
 
-	public User setCreatedTime(Timestamp createdTime) {
+	public User setCreatedTime(DateTime createdTime) {
 		this.createdTime = createdTime;
 		return this;
 	}
 
-	public Timestamp getUpdatedTime() {
+	public DateTime getUpdatedTime() {
 		return this.updatedTime;
 	}
 
-	public User setUpdatedTime(Timestamp updatedTime) {
+	public User setUpdatedTime(DateTime updatedTime) {
 		this.updatedTime = updatedTime;
 		return this;
 	}

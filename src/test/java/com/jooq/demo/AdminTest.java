@@ -5,6 +5,8 @@ import com.jooq.demo.domain.tables.pojos.Admin;
 import com.jooq.demo.repository.admin.AdminRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
@@ -12,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * @author ellien
@@ -23,6 +26,7 @@ import java.util.Map;
 @WebIntegrationTest
 public class AdminTest {
 
+    private static final Logger logger = LoggerFactory.getLogger(AdminTest.class);
     @Autowired
     private AdminRepository adminRepository;
 
@@ -36,5 +40,14 @@ public class AdminTest {
     public void findByUsername() {
         Map<String, Admin> admins = adminRepository.findByUsername("ellien");
         System.out.println("");
+    }
+
+    @Test
+    public void insertOne() {
+        Admin admin = new Admin();
+        admin.setUsername("ellien");
+        admin.setNickName("jk");
+        Integer id = adminRepository.insertOne(admin);
+        logger.info(id.toString());
     }
 }

@@ -1,6 +1,7 @@
 package com.jooq.demo.repository.admin;
 
 import com.jooq.demo.domain.tables.pojos.Admin;
+import com.jooq.demo.domain.tables.records.AdminRecord;
 import com.jooq.demo.qo.AdminQO;
 import com.jooq.demo.repository.AbstractSingleRepository;
 import org.apache.commons.lang3.tuple.Pair;
@@ -28,7 +29,15 @@ public class AdminRepository extends AbstractSingleRepository<Admin> {
         return dsl.select().from(ADMIN).where(query.conditions()).fetchInto(Admin.class);
     }
 
-    public Map<String, Admin> findByUsername(String username){
+    public Map<String, Admin> findByUsername(String username) {
         return dsl.select().from(ADMIN).where(ADMIN.USERNAME.eq(username)).fetchMap(ADMIN.USERNAME, Admin.class);
+    }
+
+    public Integer insertOne(Admin admin) {
+        AdminRecord adminRecord= dsl.insertInto(ADMIN, ADMIN.USERNAME, ADMIN.NICK_NAME)
+                .values(admin.getUsername(), admin.getNickName())
+                .returning(ADMIN.ID)
+                .fetchOne();
+        return adminRecord.getId();
     }
 }

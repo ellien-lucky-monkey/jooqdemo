@@ -89,6 +89,12 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
+        <!--jodatime-->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -180,6 +186,20 @@
                                         schema_version
                                     </excludes>
                                     <inputSchema>test</inputSchema>
+                                    <customTypes>
+                                        <customType>
+                                            <name>timestampToJodaTime</name>
+                                            <type>org.joda.time.DateTime</type>
+                                            <converter>com.jooq.demo.TimestampConverter</converter>
+                                        </customType>
+                                    </customTypes>
+                                    <forcedTypes>
+                                        <forcedType>
+                                            <name>timestampToJodaTime</name>
+                                            <expression>.*</expression>
+                                            <types>TIMESTAMP</types>
+                                        </forcedType>
+                                    </forcedTypes>
                                 </database>
                                 <target>
                                     <packageName>com.jooq.demo.domain</packageName>

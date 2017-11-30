@@ -4,16 +4,17 @@
 package com.jooq.demo.domain.tables;
 
 
+import com.jooq.demo.TimestampConverter;
 import com.jooq.demo.domain.Keys;
 import com.jooq.demo.domain.Test;
 import com.jooq.demo.domain.tables.records.UserRecord;
 
-import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Generated;
 
+import org.joda.time.DateTime;
 import org.jooq.Field;
 import org.jooq.Identity;
 import org.jooq.Table;
@@ -35,7 +36,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-	private static final long serialVersionUID = 482054334;
+	private static final long serialVersionUID = -2023338075;
 
 	/**
 	 * The reference instance of <code>test.user</code>
@@ -88,12 +89,12 @@ public class User extends TableImpl<UserRecord> {
 	/**
 	 * The column <code>test.user.created_time</code>.
 	 */
-	public final TableField<UserRecord, Timestamp> CREATED_TIME = createField("created_time", org.jooq.impl.SQLDataType.TIMESTAMP.defaulted(true), this, "");
+	public final TableField<UserRecord, DateTime> CREATED_TIME = createField("created_time", org.jooq.impl.SQLDataType.TIMESTAMP.defaulted(true), this, "", new TimestampConverter());
 
 	/**
 	 * The column <code>test.user.updated_time</code>.
 	 */
-	public final TableField<UserRecord, Timestamp> UPDATED_TIME = createField("updated_time", org.jooq.impl.SQLDataType.TIMESTAMP.defaulted(true), this, "");
+	public final TableField<UserRecord, DateTime> UPDATED_TIME = createField("updated_time", org.jooq.impl.SQLDataType.TIMESTAMP.defaulted(true), this, "", new TimestampConverter());
 
 	/**
 	 * Create a <code>test.user</code> table reference
