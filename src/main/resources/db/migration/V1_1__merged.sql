@@ -1,0 +1,1 @@
+ALTER TABLE user ADD sex VARCHAR(20) DEFAULT '' AFTER username;

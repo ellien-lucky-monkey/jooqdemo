@@ -23,10 +23,11 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-	private static final long serialVersionUID = -670418071;
+	private static final long serialVersionUID = -71665674;
 
 	private Integer   id;
 	private String    username;
+	private String    sex;
 	private String    password;
 	private String    nickName;
 	private String    address;
@@ -39,6 +40,7 @@ public class User implements Serializable {
 	public User(User value) {
 		this.id = value.id;
 		this.username = value.username;
+		this.sex = value.sex;
 		this.password = value.password;
 		this.nickName = value.nickName;
 		this.address = value.address;
@@ -50,6 +52,7 @@ public class User implements Serializable {
 	public User(
 		Integer   id,
 		String    username,
+		String    sex,
 		String    password,
 		String    nickName,
 		String    address,
@@ -59,6 +62,7 @@ public class User implements Serializable {
 	) {
 		this.id = id;
 		this.username = username;
+		this.sex = sex;
 		this.password = password;
 		this.nickName = nickName;
 		this.address = address;
@@ -82,6 +86,15 @@ public class User implements Serializable {
 
 	public User setUsername(String username) {
 		this.username = username;
+		return this;
+	}
+
+	public String getSex() {
+		return this.sex;
+	}
+
+	public User setSex(String sex) {
+		this.sex = sex;
 		return this;
 	}
 
@@ -145,6 +158,7 @@ public class User implements Serializable {
 
 		sb.append(id);
 		sb.append(", ").append(username);
+		sb.append(", ").append(sex);
 		sb.append(", ").append(password);
 		sb.append(", ").append(nickName);
 		sb.append(", ").append(address);
