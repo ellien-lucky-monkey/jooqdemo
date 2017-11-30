@@ -24,9 +24,9 @@ public class AdminRepository extends AbstractSingleRepository<Admin> {
         return Pair.of(Admin.class, ADMIN);
     }
 
-    public List<Admin> findById(Integer id) {
+    public Admin findById(Integer id) {
         AdminQO query = AdminQO.builder().id(id).build();
-        return dsl.select().from(ADMIN).where(query.conditions()).fetchInto(Admin.class);
+        return dsl.select().from(ADMIN).where(query.conditions()).fetchOneInto(Admin.class);
     }
 
     public Map<String, Admin> findByUsername(String username) {

@@ -8,11 +8,9 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
 import java.util.Map;
 
 
@@ -22,18 +20,18 @@ import java.util.Map;
  * @date 2017/11/29 15:40
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest
+@SpringBootTest(classes = Application.class)
 public class AdminTest {
 
     private static final Logger logger = LoggerFactory.getLogger(AdminTest.class);
+
     @Autowired
     private AdminRepository adminRepository;
 
     @Test
     public void find() {
-        List<Admin> admins = adminRepository.findById(1);
-        System.out.println(JSON.toJSON(admins));
+        Admin admin = adminRepository.findById(6);
+        if (admin != null) System.out.println(JSON.toJSON(admin));
     }
 
     @Test

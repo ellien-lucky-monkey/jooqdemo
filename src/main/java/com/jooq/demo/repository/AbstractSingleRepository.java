@@ -32,6 +32,7 @@ public abstract class AbstractSingleRepository<E extends Serializable> extends A
 
 
     /*------------------------------------查------------------------------------*/
+
     public List<E> findAll() {
         return dsl.selectFrom(table()).fetchInto(type());
     }
@@ -89,6 +90,7 @@ public abstract class AbstractSingleRepository<E extends Serializable> extends A
     }
 
     /*------------------------------------增------------------------------------*/
+
     public boolean insert(E entity) {
         return record(entity, false).insert() == 1;
     }
@@ -127,6 +129,7 @@ public abstract class AbstractSingleRepository<E extends Serializable> extends A
     }
 
     /*------------------------------------改------------------------------------*/
+
     public <T extends E> boolean update(T entity) {
         return record(entity, true).update() == 1;
     }
@@ -194,6 +197,7 @@ public abstract class AbstractSingleRepository<E extends Serializable> extends A
     }
 
     /*------------------------------------删------------------------------------*/
+
     public boolean deleteById(Integer... ids) {
         if (ids.length == 1) {
             return dsl.delete(table()).where(_pk().eq(ids[0])).execute() == 1;
@@ -213,9 +217,11 @@ public abstract class AbstractSingleRepository<E extends Serializable> extends A
         }
         // 如果实体属性为NULL,但数据库列为NOT NULL, 则允许数据库应用列的默认值
         int size = record.size();
-        for (int i = 0; i < size; i++)
-            if (record.getValue(i) == null && !record.field(i).getDataType().nullable())
+        for (int i = 0; i < size; i++) {
+            if (record.getValue(i) == null && !record.field(i).getDataType().nullable()) {
                 record.changed(i, false);
+            }
+        }
         return record;
     }
 
