@@ -33,6 +33,13 @@ public class AdminRepository extends AbstractSingleRepository<Admin> {
         return dsl.select().from(ADMIN).where(ADMIN.USERNAME.eq(username)).fetchMap(ADMIN.USERNAME, Admin.class);
     }
 
+    public  boolean updateById(Admin admin) {
+        return dsl.update(ADMIN).set(ADMIN.USERNAME, admin.getUsername())
+                .set(ADMIN.NICK_NAME, admin.getNickName())
+                .where(ADMIN.ID.eq(admin.getId()))
+                .execute() == 1;
+    }
+
     public Integer insertOne(Admin admin) {
         AdminRecord adminRecord= dsl.insertInto(ADMIN, ADMIN.USERNAME, ADMIN.NICK_NAME)
                 .values(admin.getUsername(), admin.getNickName())
