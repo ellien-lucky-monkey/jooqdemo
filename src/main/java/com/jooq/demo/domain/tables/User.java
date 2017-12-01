@@ -37,7 +37,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = -1197344708;
+    private static final long serialVersionUID = -1012069993;
 
     /**
      * The reference instance of <code>test.user</code>
@@ -96,6 +96,16 @@ public class User extends TableImpl<UserRecord> {
      * The column <code>test.user.updated_time</code>.
      */
     public final TableField<UserRecord, DateTime> UPDATED_TIME = createField("updated_time", org.jooq.impl.SQLDataType.TIMESTAMP.defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "", new TimestampConverter());
+
+    /**
+     * The column <code>test.user.type</code>.
+     */
+    public final TableField<UserRecord, Integer> TYPE = createField("type", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+
+    /**
+     * The column <code>test.user.mobile</code>.
+     */
+    public final TableField<UserRecord, String> MOBILE = createField("mobile", org.jooq.impl.SQLDataType.VARCHAR.length(20).nullable(false), this, "");
 
     /**
      * Create a <code>test.user</code> table reference

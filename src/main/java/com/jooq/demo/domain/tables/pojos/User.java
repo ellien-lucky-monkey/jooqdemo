@@ -24,7 +24,7 @@ import org.joda.time.DateTime;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 528600180;
+    private static final long serialVersionUID = 1739349790;
 
     private Integer  id;
     private String   username;
@@ -35,6 +35,8 @@ public class User implements Serializable {
     private Integer  isDel;
     private DateTime createdTime;
     private DateTime updatedTime;
+    private Integer  type;
+    private String   mobile;
 
     public User() {}
 
@@ -48,6 +50,8 @@ public class User implements Serializable {
         this.isDel = value.isDel;
         this.createdTime = value.createdTime;
         this.updatedTime = value.updatedTime;
+        this.type = value.type;
+        this.mobile = value.mobile;
     }
 
     public User(
@@ -59,7 +63,9 @@ public class User implements Serializable {
         String   address,
         Integer  isDel,
         DateTime createdTime,
-        DateTime updatedTime
+        DateTime updatedTime,
+        Integer  type,
+        String   mobile
     ) {
         this.id = id;
         this.username = username;
@@ -70,6 +76,8 @@ public class User implements Serializable {
         this.isDel = isDel;
         this.createdTime = createdTime;
         this.updatedTime = updatedTime;
+        this.type = type;
+        this.mobile = mobile;
     }
 
     public Integer getId() {
@@ -153,6 +161,24 @@ public class User implements Serializable {
         return this;
     }
 
+    public Integer getType() {
+        return this.type;
+    }
+
+    public User setType(Integer type) {
+        this.type = type;
+        return this;
+    }
+
+    public String getMobile() {
+        return this.mobile;
+    }
+
+    public User setMobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("User (");
@@ -166,6 +192,8 @@ public class User implements Serializable {
         sb.append(", ").append(isDel);
         sb.append(", ").append(createdTime);
         sb.append(", ").append(updatedTime);
+        sb.append(", ").append(type);
+        sb.append(", ").append(mobile);
 
         sb.append(")");
         return sb.toString();
