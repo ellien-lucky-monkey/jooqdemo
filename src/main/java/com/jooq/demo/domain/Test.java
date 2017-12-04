@@ -5,7 +5,11 @@ package com.jooq.demo.domain;
 
 
 import com.jooq.demo.domain.tables.Admin;
+import com.jooq.demo.domain.tables.Resource;
+import com.jooq.demo.domain.tables.Role;
+import com.jooq.demo.domain.tables.RoleResource;
 import com.jooq.demo.domain.tables.User;
+import com.jooq.demo.domain.tables.UserRole;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +35,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Test extends SchemaImpl {
 
-    private static final long serialVersionUID = 1537218588;
+    private static final long serialVersionUID = -887457324;
 
     /**
      * The reference instance of <code>test</code>
@@ -44,9 +48,29 @@ public class Test extends SchemaImpl {
     public final Admin ADMIN = com.jooq.demo.domain.tables.Admin.ADMIN;
 
     /**
+     * The table <code>test.resource</code>.
+     */
+    public final Resource RESOURCE = com.jooq.demo.domain.tables.Resource.RESOURCE;
+
+    /**
+     * The table <code>test.role</code>.
+     */
+    public final Role ROLE = com.jooq.demo.domain.tables.Role.ROLE;
+
+    /**
+     * The table <code>test.role_resource</code>.
+     */
+    public final RoleResource ROLE_RESOURCE = com.jooq.demo.domain.tables.RoleResource.ROLE_RESOURCE;
+
+    /**
      * The table <code>test.user</code>.
      */
     public final User USER = com.jooq.demo.domain.tables.User.USER;
+
+    /**
+     * The table <code>test.user_role</code>.
+     */
+    public final UserRole USER_ROLE = com.jooq.demo.domain.tables.UserRole.USER_ROLE;
 
     /**
      * No further instances allowed
@@ -74,6 +98,10 @@ public class Test extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             Admin.ADMIN,
-            User.USER);
+            Resource.RESOURCE,
+            Role.ROLE,
+            RoleResource.ROLE_RESOURCE,
+            User.USER,
+            UserRole.USER_ROLE);
     }
 }

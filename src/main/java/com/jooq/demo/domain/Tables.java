@@ -5,7 +5,11 @@ package com.jooq.demo.domain;
 
 
 import com.jooq.demo.domain.tables.Admin;
+import com.jooq.demo.domain.tables.Resource;
+import com.jooq.demo.domain.tables.Role;
+import com.jooq.demo.domain.tables.RoleResource;
 import com.jooq.demo.domain.tables.User;
+import com.jooq.demo.domain.tables.UserRole;
 
 import javax.annotation.Generated;
 
@@ -29,7 +33,27 @@ public class Tables {
     public static final Admin ADMIN = com.jooq.demo.domain.tables.Admin.ADMIN;
 
     /**
+     * The table <code>test.resource</code>.
+     */
+    public static final Resource RESOURCE = com.jooq.demo.domain.tables.Resource.RESOURCE;
+
+    /**
+     * The table <code>test.role</code>.
+     */
+    public static final Role ROLE = com.jooq.demo.domain.tables.Role.ROLE;
+
+    /**
+     * The table <code>test.role_resource</code>.
+     */
+    public static final RoleResource ROLE_RESOURCE = com.jooq.demo.domain.tables.RoleResource.ROLE_RESOURCE;
+
+    /**
      * The table <code>test.user</code>.
      */
     public static final User USER = com.jooq.demo.domain.tables.User.USER;
+
+    /**
+     * The table <code>test.user_role</code>.
+     */
+    public static final UserRole USER_ROLE = com.jooq.demo.domain.tables.UserRole.USER_ROLE;
 }

@@ -5,12 +5,21 @@ package com.jooq.demo.domain;
 
 
 import com.jooq.demo.domain.tables.Admin;
+import com.jooq.demo.domain.tables.Resource;
+import com.jooq.demo.domain.tables.Role;
+import com.jooq.demo.domain.tables.RoleResource;
 import com.jooq.demo.domain.tables.User;
+import com.jooq.demo.domain.tables.UserRole;
 import com.jooq.demo.domain.tables.records.AdminRecord;
+import com.jooq.demo.domain.tables.records.ResourceRecord;
+import com.jooq.demo.domain.tables.records.RoleRecord;
+import com.jooq.demo.domain.tables.records.RoleResourceRecord;
 import com.jooq.demo.domain.tables.records.UserRecord;
+import com.jooq.demo.domain.tables.records.UserRoleRecord;
 
 import javax.annotation.Generated;
 
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
@@ -35,19 +44,31 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final Identity<AdminRecord, Integer> IDENTITY_ADMIN = Identities0.IDENTITY_ADMIN;
+    public static final Identity<ResourceRecord, Integer> IDENTITY_RESOURCE = Identities0.IDENTITY_RESOURCE;
+    public static final Identity<RoleRecord, Integer> IDENTITY_ROLE = Identities0.IDENTITY_ROLE;
+    public static final Identity<RoleResourceRecord, Integer> IDENTITY_ROLE_RESOURCE = Identities0.IDENTITY_ROLE_RESOURCE;
     public static final Identity<UserRecord, Integer> IDENTITY_USER = Identities0.IDENTITY_USER;
+    public static final Identity<UserRoleRecord, Integer> IDENTITY_USER_ROLE = Identities0.IDENTITY_USER_ROLE;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<AdminRecord> KEY_ADMIN_PRIMARY = UniqueKeys0.KEY_ADMIN_PRIMARY;
+    public static final UniqueKey<ResourceRecord> KEY_RESOURCE_PRIMARY = UniqueKeys0.KEY_RESOURCE_PRIMARY;
+    public static final UniqueKey<RoleRecord> KEY_ROLE_PRIMARY = UniqueKeys0.KEY_ROLE_PRIMARY;
+    public static final UniqueKey<RoleResourceRecord> KEY_ROLE_RESOURCE_PRIMARY = UniqueKeys0.KEY_ROLE_RESOURCE_PRIMARY;
     public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = UniqueKeys0.KEY_USER_PRIMARY;
+    public static final UniqueKey<UserRoleRecord> KEY_USER_ROLE_PRIMARY = UniqueKeys0.KEY_USER_ROLE_PRIMARY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<RoleResourceRecord, RoleRecord> ROLE_RESOURCE_IBFK_2 = ForeignKeys0.ROLE_RESOURCE_IBFK_2;
+    public static final ForeignKey<RoleResourceRecord, ResourceRecord> ROLE_RESOURCE_IBFK_1 = ForeignKeys0.ROLE_RESOURCE_IBFK_1;
+    public static final ForeignKey<UserRoleRecord, RoleRecord> USER_ROLE_IBFK_2 = ForeignKeys0.USER_ROLE_IBFK_2;
+    public static final ForeignKey<UserRoleRecord, UserRecord> USER_ROLE_IBFK_1 = ForeignKeys0.USER_ROLE_IBFK_1;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -55,11 +76,26 @@ public class Keys {
 
     private static class Identities0 extends AbstractKeys {
         public static Identity<AdminRecord, Integer> IDENTITY_ADMIN = createIdentity(Admin.ADMIN, Admin.ADMIN.ID);
+        public static Identity<ResourceRecord, Integer> IDENTITY_RESOURCE = createIdentity(Resource.RESOURCE, Resource.RESOURCE.ID);
+        public static Identity<RoleRecord, Integer> IDENTITY_ROLE = createIdentity(Role.ROLE, Role.ROLE.ID);
+        public static Identity<RoleResourceRecord, Integer> IDENTITY_ROLE_RESOURCE = createIdentity(RoleResource.ROLE_RESOURCE, RoleResource.ROLE_RESOURCE.ID);
         public static Identity<UserRecord, Integer> IDENTITY_USER = createIdentity(User.USER, User.USER.ID);
+        public static Identity<UserRoleRecord, Integer> IDENTITY_USER_ROLE = createIdentity(UserRole.USER_ROLE, UserRole.USER_ROLE.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<AdminRecord> KEY_ADMIN_PRIMARY = createUniqueKey(Admin.ADMIN, "KEY_admin_PRIMARY", Admin.ADMIN.ID);
+        public static final UniqueKey<ResourceRecord> KEY_RESOURCE_PRIMARY = createUniqueKey(Resource.RESOURCE, "KEY_resource_PRIMARY", Resource.RESOURCE.ID);
+        public static final UniqueKey<RoleRecord> KEY_ROLE_PRIMARY = createUniqueKey(Role.ROLE, "KEY_role_PRIMARY", Role.ROLE.ID);
+        public static final UniqueKey<RoleResourceRecord> KEY_ROLE_RESOURCE_PRIMARY = createUniqueKey(RoleResource.ROLE_RESOURCE, "KEY_role_resource_PRIMARY", RoleResource.ROLE_RESOURCE.ID);
         public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = createUniqueKey(User.USER, "KEY_user_PRIMARY", User.USER.ID);
+        public static final UniqueKey<UserRoleRecord> KEY_USER_ROLE_PRIMARY = createUniqueKey(UserRole.USER_ROLE, "KEY_user_role_PRIMARY", UserRole.USER_ROLE.ID);
+    }
+
+    private static class ForeignKeys0 extends AbstractKeys {
+        public static final ForeignKey<RoleResourceRecord, RoleRecord> ROLE_RESOURCE_IBFK_2 = createForeignKey(com.jooq.demo.domain.Keys.KEY_ROLE_PRIMARY, RoleResource.ROLE_RESOURCE, "role_resource_ibfk_2", RoleResource.ROLE_RESOURCE.ROLE_ID);
+        public static final ForeignKey<RoleResourceRecord, ResourceRecord> ROLE_RESOURCE_IBFK_1 = createForeignKey(com.jooq.demo.domain.Keys.KEY_RESOURCE_PRIMARY, RoleResource.ROLE_RESOURCE, "role_resource_ibfk_1", RoleResource.ROLE_RESOURCE.RESOURCE_ID);
+        public static final ForeignKey<UserRoleRecord, RoleRecord> USER_ROLE_IBFK_2 = createForeignKey(com.jooq.demo.domain.Keys.KEY_ROLE_PRIMARY, UserRole.USER_ROLE, "user_role_ibfk_2", UserRole.USER_ROLE.ROLE_ID);
+        public static final ForeignKey<UserRoleRecord, UserRecord> USER_ROLE_IBFK_1 = createForeignKey(com.jooq.demo.domain.Keys.KEY_USER_PRIMARY, UserRole.USER_ROLE, "user_role_ibfk_1", UserRole.USER_ROLE.USER_ID);
     }
 }

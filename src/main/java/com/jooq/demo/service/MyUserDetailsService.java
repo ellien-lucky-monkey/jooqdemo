@@ -1,13 +1,16 @@
 package com.jooq.demo.service;
 
+import com.jooq.demo.domain.tables.pojos.Role;
 import com.jooq.demo.domain.tables.pojos.User;
+import com.jooq.demo.security.SecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 /**
  * @author ellien
@@ -15,11 +18,13 @@ import org.springframework.util.StringUtils;
  * @date 2017/12/01 11:50
  */
 @Component
-@SuppressWarnings("unchecked")
-public class MyUserDetailsService implements UserDetailsService{
+public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -30,6 +35,7 @@ public class MyUserDetailsService implements UserDetailsService{
         if (user == null) {
             throw new UsernameNotFoundException("user not exist");
         }
-        return null;
+        List<Role> roles = roleService.findByUserId(user.getId());
+        return new SecurityUser(user, roles);
     }
 }
