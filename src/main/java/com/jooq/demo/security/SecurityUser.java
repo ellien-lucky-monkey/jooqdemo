@@ -59,7 +59,9 @@ public class SecurityUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = Sets.newConcurrentHashSet();
-        roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRoleName())));
+        if (!roles.isEmpty()) {
+            roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRoleName())));
+        }
         return authorities;
     }
 

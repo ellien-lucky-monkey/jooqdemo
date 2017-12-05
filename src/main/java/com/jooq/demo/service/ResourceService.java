@@ -19,6 +19,7 @@ public class ResourceService {
     private ResourceRepository resourceRepository;
 
 
+
     public List<Resource> findByRoleId(Integer roleId){
         return resourceRepository.findByRoleId(roleId);
     }
