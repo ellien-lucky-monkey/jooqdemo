@@ -1,6 +1,7 @@
 package com.jooq.demo;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import com.jooq.demo.domain.tables.pojos.Admin;
 import com.jooq.demo.repository.admin.AdminRepository;
 import org.junit.Test;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 /**
@@ -30,6 +33,11 @@ public class AdminTest {
 
     @Test
     public void find() {
+        List<String> strings = Lists.newArrayList();
+        strings.add("s");
+        strings.add("ellein");
+        Optional<String> string = strings.stream().map(String::toUpperCase).reduce(String::concat);
+        String result = string.orElse("");
         Admin admin = adminRepository.findById(6);
         if (admin != null) System.out.println(JSON.toJSON(admin));
     }

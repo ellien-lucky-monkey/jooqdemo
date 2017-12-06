@@ -2,6 +2,7 @@ package com.jooq.demo.controller;
 
 import com.jooq.demo.domain.tables.pojos.Admin;
 import com.jooq.demo.service.AdminService;
+import com.jooq.demo.vos.AdminVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,11 @@ public class AdminController {
     @GetMapping("/info")
     public Admin info(@RequestParam("id") Integer id) {
         return adminService.findById(id);
+    }
+
+    @GetMapping("/info/vo")
+    public AdminVO infoVO(@RequestParam("id") Integer id) {
+        return adminService.buildVO(id);
     }
 
     @PostMapping("/update")

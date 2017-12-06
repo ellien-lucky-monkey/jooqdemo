@@ -1,7 +1,9 @@
 package com.jooq.demo.service;
 
 import com.jooq.demo.domain.tables.pojos.Admin;
+import com.jooq.demo.qo.AdminQO;
 import com.jooq.demo.repository.admin.AdminRepository;
+import com.jooq.demo.vos.AdminVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -25,6 +27,19 @@ public class AdminService {
         return adminRepository.findById(id);
     }
 
+    @Cacheable(value = "adminVO", key = "#id.toString()")
+    public AdminVO buildVO(Integer id){
+
+        Admin admin = adminRepository.findById(id);
+        if (admin != null){
+            return AdminVO.builder().id(admin.getId())
+                    .nickName(admin.getNickName())
+                    .username(admin.getUsername())
+                    .build();
+        }
+        return null;
+    }
+
     /**
      * @CachePut 注解会缓存该方法的返回值 很恶心🤢 但是确实起到了刷新缓存的作用
      *
@@ -35,5 +50,9 @@ public class AdminService {
     public Admin updateById(Admin admin){
          adminRepository.updateById(admin);
         return adminRepository.findById(admin.getId());
+    }
+
+    public void list(Integer id) {
+        AdminQO adminQO = AdminQO.builder().id(id).build();
     }
 }
