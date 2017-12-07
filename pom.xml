@@ -237,7 +237,7 @@
                                         <customType>
                                             <name>userType</name>
                                             <type>com.jooq.demo.enums.UserType</type>
-                                            <converter>com.jooq.demo.converter.UserTypeConverter1</converter>
+                                            <converter>com.jooq.demo.converter.UserTypeConverter</converter>
                                         </customType>
                                     </customTypes>
                                     <forcedTypes>

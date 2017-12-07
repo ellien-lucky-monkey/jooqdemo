@@ -24,7 +24,7 @@ import org.joda.time.DateTime;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resource implements Serializable {
 
-    private static final long serialVersionUID = 1001221907;
+    private static final long serialVersionUID = 1821664653;
 
     private Integer  id;
     private Integer  parentId;
@@ -34,6 +34,7 @@ public class Resource implements Serializable {
     private Integer  status;
     private DateTime createTime;
     private DateTime updateTime;
+    private String   permission;
 
     public Resource() {}
 
@@ -46,6 +47,7 @@ public class Resource implements Serializable {
         this.status = value.status;
         this.createTime = value.createTime;
         this.updateTime = value.updateTime;
+        this.permission = value.permission;
     }
 
     public Resource(
@@ -56,7 +58,8 @@ public class Resource implements Serializable {
         String   url,
         Integer  status,
         DateTime createTime,
-        DateTime updateTime
+        DateTime updateTime,
+        String   permission
     ) {
         this.id = id;
         this.parentId = parentId;
@@ -66,6 +69,7 @@ public class Resource implements Serializable {
         this.status = status;
         this.createTime = createTime;
         this.updateTime = updateTime;
+        this.permission = permission;
     }
 
     public Integer getId() {
@@ -140,6 +144,15 @@ public class Resource implements Serializable {
         return this;
     }
 
+    public String getPermission() {
+        return this.permission;
+    }
+
+    public Resource setPermission(String permission) {
+        this.permission = permission;
+        return this;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Resource (");
@@ -152,6 +165,7 @@ public class Resource implements Serializable {
         sb.append(", ").append(status);
         sb.append(", ").append(createTime);
         sb.append(", ").append(updateTime);
+        sb.append(", ").append(permission);
 
         sb.append(")");
         return sb.toString();

@@ -37,7 +37,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Admin extends TableImpl<AdminRecord> {
 
-    private static final long serialVersionUID = -1334124603;
+    private static final long serialVersionUID = -387427682;
 
     /**
      * The reference instance of <code>test.admin</code>
@@ -65,7 +65,7 @@ public class Admin extends TableImpl<AdminRecord> {
     /**
      * The column <code>test.admin.password</code>.
      */
-    public final TableField<AdminRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR.length(50).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<AdminRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR.length(20).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>test.admin.nick_name</code>.
@@ -75,7 +75,7 @@ public class Admin extends TableImpl<AdminRecord> {
     /**
      * The column <code>test.admin.address</code>.
      */
-    public final TableField<AdminRecord, String> ADDRESS = createField("address", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+    public final TableField<AdminRecord, String> ADDRESS = createField("address", org.jooq.impl.SQLDataType.VARCHAR.length(20), this, "");
 
     /**
      * The column <code>test.admin.is_del</code>.

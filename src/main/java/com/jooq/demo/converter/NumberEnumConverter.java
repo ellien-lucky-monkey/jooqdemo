@@ -20,7 +20,7 @@ public class NumberEnumConverter<T extends Number, U extends Enum<U>> extends Ab
 
     public NumberEnumConverter(Class<T> fromType, Class<U> toType) {
         super(fromType, toType);
-        this.lookup = new LinkedHashMap<>();
+        this.lookup = new LinkedHashMap<T, U>();
         for (U u : toType.getEnumConstants()) {
             this.lookup.put(to(u), u);
         }
@@ -35,13 +35,13 @@ public class NumberEnumConverter<T extends Number, U extends Enum<U>> extends Ab
     public T to(U uObj) {
         if (uObj == null){
             return null;
+        }else {
+            try {
+                Object value = BeanUtils.getPropertyDescriptor(toType(), "value").getReadMethod().invoke(uObj);
+                return convert(value, fromType());
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                return null;
+            }
         }
-        try {
-            Object value = BeanUtils.getPropertyDescriptor(toType(), "value").getReadMethod().invoke(uObj);
-            return convert(value, fromType());
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            return null;
-        }
-
     }
 }

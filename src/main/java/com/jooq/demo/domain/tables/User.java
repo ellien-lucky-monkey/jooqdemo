@@ -5,7 +5,7 @@ package com.jooq.demo.domain.tables;
 
 
 import com.jooq.demo.converter.TimestampConverter;
-import com.jooq.demo.converter.UserTypeConverter1;
+import com.jooq.demo.converter.UserTypeConverter;
 import com.jooq.demo.domain.Keys;
 import com.jooq.demo.domain.Test;
 import com.jooq.demo.domain.tables.records.UserRecord;
@@ -39,7 +39,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = 2094078110;
+    private static final long serialVersionUID = 1321224252;
 
     /**
      * The reference instance of <code>test.user</code>
@@ -72,7 +72,7 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>test.user.password</code>.
      */
-    public final TableField<UserRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR.length(20).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<UserRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR.length(64).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * The column <code>test.user.nick_name</code>.
@@ -102,7 +102,7 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>test.user.type</code>.
      */
-    public final TableField<UserRecord, UserType> TYPE = createField("type", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("2", org.jooq.impl.SQLDataType.INTEGER)), this, "", new UserTypeConverter1());
+    public final TableField<UserRecord, UserType> TYPE = createField("type", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "", new UserTypeConverter());
 
     /**
      * The column <code>test.user.mobile</code>.

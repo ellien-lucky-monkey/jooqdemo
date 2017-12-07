@@ -68,24 +68,24 @@ public class UserService {
         user.setMobile(mobile);
         user.setPassword(bCryptPasswordEncoder.encode(password));
 
-        if (UserType.ADMIN.getValue() == type) {
-            user.setType(UserType.ADMIN);
-        } else if (UserType.USER.getValue() == type){
-            user.setType(UserType.USER);
-        } else if (UserType.DOCTOR.getValue() == type){
-            user.setType(UserType.DOCTOR);
-        } else if (UserType.GUEST.getValue() == type){
-            user.setType(UserType.GUEST);
-        } else if (UserType.DENIED.getValue() == type){
-            user.setType(UserType.DENIED);
-        }
-        Role role = roleService.findByName(user.getType().getName());
-        Assert.notNull(role, "角色不存在");
-        Integer userId =  userRepository.insertAndReturnId(user);
-        UserRole userRole = new UserRole();
-        userRole.setUserId(userId);
-        userRole.setRoleId(role.getId());
-        userRoleService.insert(userRole);
+//        if (UserType.ADMIN.getValue() == type) {
+//            user.setType(UserType.ADMIN);
+//        } else if (UserType.USER.getValue() == type){
+//            user.setType(UserType.USER);
+//        } else if (UserType.DOCTOR.getValue() == type){
+//            user.setType(UserType.DOCTOR);
+//        } else if (UserType.GUEST.getValue() == type){
+//            user.setType(UserType.GUEST);
+//        } else if (UserType.DENIED.getValue() == type){
+//            user.setType(UserType.DENIED);
+//        }
+//        Role role = roleService.findByName(user.getType().getName());
+//        Assert.notNull(role, "角色不存在");
+//        Integer userId =  userRepository.insertAndReturnId(user);
+//        UserRole userRole = new UserRole();
+//        userRole.setUserId(userId);
+//        userRole.setRoleId(role.getId());
+//        userRoleService.insert(userRole);
         return user;
     }
 }

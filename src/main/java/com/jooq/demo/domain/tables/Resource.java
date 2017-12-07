@@ -37,7 +37,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resource extends TableImpl<ResourceRecord> {
 
-    private static final long serialVersionUID = 820417564;
+    private static final long serialVersionUID = 601351568;
 
     /**
      * The reference instance of <code>test.resource</code>
@@ -91,6 +91,11 @@ public class Resource extends TableImpl<ResourceRecord> {
      * The column <code>test.resource.update_time</code>.
      */
     public final TableField<ResourceRecord, DateTime> UPDATE_TIME = createField("update_time", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.inline("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "", new TimestampConverter());
+
+    /**
+     * The column <code>test.resource.permission</code>.
+     */
+    public final TableField<ResourceRecord, String> PERMISSION = createField("permission", org.jooq.impl.SQLDataType.VARCHAR.length(11).nullable(false).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * Create a <code>test.resource</code> table reference
