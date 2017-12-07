@@ -1,0 +1,1 @@
+ALTER TABLE resource ADD permission VARCHAR (11) NOT NULL DEFAULT '';

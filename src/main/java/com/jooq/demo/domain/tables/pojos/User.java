@@ -4,6 +4,8 @@
 package com.jooq.demo.domain.tables.pojos;
 
 
+import com.jooq.demo.enums.UserType;
+
 import java.io.Serializable;
 
 import javax.annotation.Generated;
@@ -24,7 +26,7 @@ import org.joda.time.DateTime;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1739349790;
+    private static final long serialVersionUID = 1459171894;
 
     private Integer  id;
     private String   username;
@@ -35,7 +37,7 @@ public class User implements Serializable {
     private Integer  isDel;
     private DateTime createdTime;
     private DateTime updatedTime;
-    private Integer  type;
+    private UserType type;
     private String   mobile;
 
     public User() {}
@@ -64,7 +66,7 @@ public class User implements Serializable {
         Integer  isDel,
         DateTime createdTime,
         DateTime updatedTime,
-        Integer  type,
+        UserType type,
         String   mobile
     ) {
         this.id = id;
@@ -161,11 +163,11 @@ public class User implements Serializable {
         return this;
     }
 
-    public Integer getType() {
+    public UserType getType() {
         return this.type;
     }
 
-    public User setType(Integer type) {
+    public User setType(UserType type) {
         this.type = type;
         return this;
     }

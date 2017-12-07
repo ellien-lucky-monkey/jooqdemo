@@ -1,5 +1,7 @@
 package com.jooq.demo.service;
 
+import com.jooq.demo.repository.user.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,4 +11,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LoginService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleService roleService;
+
 }

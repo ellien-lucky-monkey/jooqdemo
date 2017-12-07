@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS role;
 
-CREATE TABLE `role` (
+CREATE TABLE IF NOT EXISTS `role` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `role_name` VARCHAR(20) NOT NULL DEFAULT '',
 `is_del` int(11) DEFAULT '0',
@@ -10,9 +9,8 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS user_role;
 
-CREATE TABLE `user_role` (
+CREATE TABLE IF NOT EXISTS `user_role` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `role_id` int(11) NOT NULL ,
 `user_id` int(11) NOT NULL ,

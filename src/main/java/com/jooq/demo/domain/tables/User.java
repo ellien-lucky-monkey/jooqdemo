@@ -5,9 +5,11 @@ package com.jooq.demo.domain.tables;
 
 
 import com.jooq.demo.converter.TimestampConverter;
+import com.jooq.demo.converter.UserTypeConverter1;
 import com.jooq.demo.domain.Keys;
 import com.jooq.demo.domain.Test;
 import com.jooq.demo.domain.tables.records.UserRecord;
+import com.jooq.demo.enums.UserType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +39,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = -1012069993;
+    private static final long serialVersionUID = 2094078110;
 
     /**
      * The reference instance of <code>test.user</code>
@@ -100,7 +102,7 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>test.user.type</code>.
      */
-    public final TableField<UserRecord, Integer> TYPE = createField("type", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<UserRecord, UserType> TYPE = createField("type", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("2", org.jooq.impl.SQLDataType.INTEGER)), this, "", new UserTypeConverter1());
 
     /**
      * The column <code>test.user.mobile</code>.

@@ -28,4 +28,8 @@ public class RoleRepository extends AbstractSingleRepository<Role> {
         return dsl.select().from(ROLE).innerJoin(USER_ROLE).on(ROLE.ID.eq(USER_ROLE.ROLE_ID))
                 .where(USER_ROLE.USER_ID.eq(userId)).fetchInto(Role.class);
     }
+
+    public Role findByName(String name){
+        return dsl.select().from(ROLE).where(ROLE.ROLE_NAME.eq(name)).fetchOneInto(Role.class);
+    }
 }

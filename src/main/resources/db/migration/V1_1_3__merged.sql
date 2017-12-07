@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS resource;
 
-CREATE TABLE `resource` (
+CREATE TABLE IF NOT EXISTS `resource` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `parent_id` INT(11),
 `parent_ids` VARCHAR(20),
@@ -13,9 +12,8 @@ CREATE TABLE `resource` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS role_resource;
 
-CREATE TABLE `role_resource` (
+CREATE TABLE IF NOT EXISTS `role_resource` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `role_id` int(11) NOT NULL ,
 `resource_id` int(11) NOT NULL ,

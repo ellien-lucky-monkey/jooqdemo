@@ -16,7 +16,9 @@ public class JsoupDemoTest {
     @Test
     public void test(){
         try {
-            Document doc = Jsoup.connect("http://www.oschina.net/").get();
+           // Jsoup.parse()
+            Document doc = Jsoup.connect("https://search.jd.com/Search?keyword=iphonex&enc=utf-8&suggest=1.def.0.V17&wq=iphone&pvid=142a93839b9d47738b98e940ed0244df").get();
+
             doc.title();
         } catch (IOException e) {
             e.printStackTrace();

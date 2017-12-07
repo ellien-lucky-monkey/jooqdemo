@@ -16,6 +16,7 @@ import static com.jooq.demo.domain.Tables.USER;
  */
 @Repository
 public class UserRepository extends AbstractSingleRepository<User>{
+
     @Override
     protected Pair<Class<User>, Table<? extends UpdatableRecord>> mapping() {
         return Pair.of(User.class, USER);
