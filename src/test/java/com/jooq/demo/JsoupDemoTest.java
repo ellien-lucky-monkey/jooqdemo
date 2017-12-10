@@ -2,6 +2,8 @@ package com.jooq.demo;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,7 +20,8 @@ public class JsoupDemoTest {
         try {
            // Jsoup.parse()
             Document doc = Jsoup.connect("https://search.jd.com/Search?keyword=iphonex&enc=utf-8&suggest=1.def.0.V17&wq=iphone&pvid=142a93839b9d47738b98e940ed0244df").get();
-
+            Element parentElement = doc.body().getElementById("J_goodsList");
+            Element childNode = parentElement.child(0);
             doc.title();
         } catch (IOException e) {
             e.printStackTrace();

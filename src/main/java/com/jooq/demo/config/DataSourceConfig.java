@@ -16,12 +16,25 @@ import javax.sql.DataSource;
  * @date 2017/11/29 15:11
  */
 @Configuration
-public class TestDbConfig {
+public class DataSourceConfig {
 
     @Primary
     @Bean(initMethod = "init", destroyMethod = "close")
     @ConfigurationProperties(prefix = "db.test")
     public DataSource dataSourceA() {
+        return new DruidDataSource();
+    }
+
+
+    @Bean(initMethod = "init", destroyMethod = "close")
+    @ConfigurationProperties(prefix = "db.jpa")
+    public DataSource dataSourceB() {
+        return new DruidDataSource();
+    }
+
+    @Bean(initMethod = "init", destroyMethod = "close")
+    @ConfigurationProperties(prefix = "db.quartz")
+    public DataSource dataSourceC() {
         return new DruidDataSource();
     }
 
@@ -33,16 +46,18 @@ public class TestDbConfig {
         return transactionManager;
     }
 
-    @Bean(initMethod = "init", destroyMethod = "close")
-    @ConfigurationProperties(prefix = "db.jpa")
-    public DataSource dataSourceB() {
-        return new DruidDataSource();
-    }
-
     @Bean
     public DataSourceTransactionManager transactionManagerB() {
         DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
         transactionManager.setDataSource(dataSourceB());
+        return transactionManager;
+    }
+
+
+    @Bean
+    public DataSourceTransactionManager transactionManagerC() {
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSourceA());
         return transactionManager;
     }
 }
