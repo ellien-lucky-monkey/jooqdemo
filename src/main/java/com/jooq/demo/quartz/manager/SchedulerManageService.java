@@ -84,7 +84,7 @@ public class SchedulerManageService {
      */
     public void remove(String jobName) throws SchedulerException {
         scheduler.deleteJob(new JobKey(jobName, JOB_GROUP));
-//        RedisPub.pubSchedulerJobRefresh();
+        //todo 如果启用缓存需要刷新
     }
 
     /**

@@ -11,10 +11,11 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * 定时任务配置
- * User: jeff
- * Date: 13-8-27
- * Time: 上午10:54
+ * 定时任务配置类
+ *
+ * @author ellien
+ * @package com.jooq.demo.quartz.entity
+ * @date 2017/12/09 17:00
  */
 @Entity
 @Data
@@ -198,9 +199,6 @@ public class ScheduleJobConfig {
      * 下次触发时间，来自SCHE_TRIGGERS表.在触发器状态从`ACQUIRED`变成`BLOCKED`时，就会更新PREV_FIRE_TIME、NEXT_FIRE_TIME。然后定时任务才正式开始执行
      */
     private Long NEXT_FIRE_TIME;
-
-
-
     /**
      * 暂停状态  1:隔N分钟提醒  2：M天内不提醒 3:删除状态
      */

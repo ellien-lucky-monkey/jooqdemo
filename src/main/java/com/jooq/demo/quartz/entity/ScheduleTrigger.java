@@ -30,7 +30,7 @@ public class ScheduleTrigger {
     /**
      * 集群名
      */
-    private String schedName;
+    private String scheduleName;
     /**
      * 触发器名
      */

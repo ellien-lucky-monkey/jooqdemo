@@ -2,7 +2,6 @@ package com.jooq.demo.quartz;
 
 import org.quartz.Job;
 import org.quartz.SchedulerException;
-import org.quartz.spi.JobFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,4 +65,5 @@ public class QuartzConfig {
 
         return jobTask;
     }
+
 }

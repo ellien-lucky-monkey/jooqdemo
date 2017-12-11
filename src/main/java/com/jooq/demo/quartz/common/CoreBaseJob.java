@@ -10,12 +10,13 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 import java.io.Serializable;
 
 /**
- * 定时任务调度基类
- * User: jeff
- * Date: 13-8-26
- * Time: 下午6:12
+ * @author ellien
+ * @package com.jooq.demo.quartz.common
+ * @date 2017/12/09 17:00
  */
+//执行之后更新JobDataMap
 @PersistJobDataAfterExecution
+// 禁止并发执行
 @DisallowConcurrentExecution
 public abstract class CoreBaseJob extends QuartzJobBean implements Serializable {
 
