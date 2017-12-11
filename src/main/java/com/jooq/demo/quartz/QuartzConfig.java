@@ -62,7 +62,6 @@ public class QuartzConfig {
         JobDetailFactoryBean jobTask = new JobDetailFactoryBean();
 
         jobTask.setJobClass(Job.class);
-
         return jobTask;
     }
 

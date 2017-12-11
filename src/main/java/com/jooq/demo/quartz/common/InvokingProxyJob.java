@@ -2,6 +2,7 @@ package com.jooq.demo.quartz.common;
 
 
 import com.jooq.demo.quartz.base.ProxyBaseJob;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;
@@ -16,10 +17,8 @@ import java.util.Date;
  * @package com.jooq.demo.quartz
  * @date 2017/12/09 17:00
  */
+@Slf4j
 public class InvokingProxyJob extends CoreBaseJob {
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-
 
     @Override
     protected void doProcess(JobExecutionContext context) throws JobExecutionException {
@@ -27,7 +26,6 @@ public class InvokingProxyJob extends CoreBaseJob {
         JobDetail jobDetail = context.getJobDetail();
         String jobName = jobDetail.getKey().getName();
         ProxyBaseJob job;
-        Date beginTime = new Date();
         //todo 执行日志
         try {
             job = applicationContext.getBean(jobName, ProxyBaseJob.class);
@@ -36,7 +34,7 @@ public class InvokingProxyJob extends CoreBaseJob {
         } catch (Throwable e) {
             // 打印异常并发送异常
             String exceptionMessage = ExceptionUtils.getStackTrace(e);
-            logger.error("[doProcess][job({}) 异常：{}]", jobName, exceptionMessage);
+            log.error("[doProcess][job({}) 异常：{}]", jobName, exceptionMessage);
         }
     }
 
